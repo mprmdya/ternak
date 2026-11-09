@@ -1,0 +1,461 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Space Grotesk', sans-serif;
+    background: #0C121C;
+    color: #EFF3F8;
+    overflow-x: hidden;
+}
+
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: rgba(12, 20, 28, 0.85);
+    backdrop-filter: blur(16px);
+    border-right: 1px solid rgba(74, 222, 128, 0.2);
+    padding: 28px 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 48px;
+    padding-left: 8px;
+}
+
+.logo-icon {
+    background: linear-gradient(135deg, #4ADE80, #22C55E);
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #0A1F12;
+    box-shadow: 0 8px 20px rgba(74, 222, 128, 0.2);
+}
+
+.logo h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FFFFFF, #A3E8B0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.nav-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    color: #B0C4D9;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.nav-item i {
+    width: 24px;
+    font-size: 1.2rem;
+}
+
+.nav-item.active {
+    background: rgba(74, 222, 128, 0.15);
+    color: #4ADE80;
+    border-left: 3px solid #4ADE80;
+}
+
+.nav-item:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.05);
+    color: #E2F0E8;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(74, 222, 128, 0.2);
+    font-size: 0.7rem;
+    color: #6B8A7C;
+}
+
+.main-content {
+    flex: 1;
+    padding: 28px 32px;
+    overflow-x: auto;
+    background: radial-gradient(circle at 10% 20%, rgba(10, 25, 20, 0.4), rgba(8, 18, 24, 0.6));
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.page-title h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.live-status {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    padding: 8px 20px;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.live-dot {
+    width: 10px;
+    height: 10px;
+    background: #4ADE80;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4ADE80;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(0, 1fr);
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: rgba(18, 28, 38, 0.65);
+    backdrop-filter: blur(12px);
+    border-radius: 36px;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    padding: 32px 28px;
+    transition: all 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(74, 222, 128, 0.6);
+    background: rgba(22, 34, 46, 0.75);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.card-header i {
+    font-size: 42px;
+    color: #4ADE80;
+    filter: drop-shadow(0 0 5px #4ADE8066);
+}
+
+.chip {
+    background: #1F2E3A;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.value {
+    font-size: 4rem;
+    font-weight: 800;
+    font-family: 'Space Grotesk', monospace;
+    letter-spacing: -1px;
+    margin: 12px 0;
+}
+
+.unit {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #9BB8A8;
+    margin-left: 4px;
+}
+
+.sub {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #A1C2B2;
+    letter-spacing: 0.5px;
+}
+
+.badge-sm {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-top: 8px;
+}
+
+.badge-safe {
+    background: #0F4020;
+    color: #B0F5C2;
+}
+
+.badge-warn {
+    background: #7C3A0A;
+    color: #FFE1B3;
+}
+
+.badge-danger {
+    background: #911A1A;
+    color: #FFC2C2;
+}
+
+.row-metrics {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.metric-box {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 12px 6px;
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.double-panel {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.chart-panel,
+.control-panel {
+    background: rgba(18, 28, 38, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    padding: 24px;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: 3px solid #4ADE80;
+    padding-left: 14px;
+}
+
+canvas {
+    max-height: 240px;
+    width: 100%;
+}
+
+.actuator-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.actuator-item {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.actuator-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.actuator-info i {
+    font-size: 24px;
+    color: #4ADE80;
+}
+
+.toggle-btn {
+    background: #2D3E48;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 40px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle-btn.active {
+    background: #4ADE80;
+    color: #0A2F1F;
+    box-shadow: 0 0 10px #4ADE80;
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #6A8F7C;
+    margin-top: 24px;
+    padding: 12px;
+    border-top: 1px solid rgba(74, 222, 128, 0.1);
+}
+
+@media (max-width: 1200px) {
+    .sensor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .double-panel {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1000px) {
+    .sensor-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-wrapper {
+        flex-direction: column;
+    }
+
+    @media (max-width: 680px) {
+        .sensor-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        padding: 16px;
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .main-content {
+        padding: 28px 24px;
+    }
+
+    .sensor-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Pastikan sidebar tidak mengecil */
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    /* agar tidak menyusut */
+}
+
+/* Konten utama menyesuaikan sisa ruang */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    /* mencegah overflow */
+    padding: 28px 32px;
+}
+
+/* Untuk layar dengan lebar antara 768px - 1200px, sidebar tetap vertikal tapi mungkin lebih rapi */
+@media (max-width: 1200px) and (min-width: 769px) {
+    .sidebar {
+        width: 260px;
+        /* sedikit kurangi jika perlu */
+        padding: 20px 16px;
+    }
+
+    .main-content {
+        padding: 20px 24px;
+    }
+}
+
+/* Untuk layar sangat kecil ( < 768px ), sidebar menjadi horizontal (seperti kode sebelumnya) */
+@media (max-width: 768px) {
+    .app-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 12px 20px;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+}
